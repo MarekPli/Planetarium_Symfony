@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Sun
+ *
+ * @ORM\Table(name="Sun")
+ * @ORM\Entity
+ */
+class Sun
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longt", type="decimal", precision=10, scale=7, nullable=false)
+     */
+    private $longt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="distAU", type="decimal", precision=11, scale=9, nullable=false)
+     */
+    private $distau;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * General
+ *
+ * @ORM\Table(name="General", uniqueConstraints={@ORM\UniqueConstraint(name="planet", columns={"planet"})})
+ * @ORM\Entity
+ */
+class General
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="planet", type="string", length=20, nullable=false)
+     */
+    private $planet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="max_id", type="integer", nullable=false)
+     */
+    private $maxId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="min_AU", type="decimal", precision=11, scale=9, nullable=false)
+     */
+    private $minAu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="max_AU", type="decimal", precision=11, scale=9, nullable=false)
+     */
+    private $maxAu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avg_AU", type="decimal", precision=11, scale=9, nullable=false)
+     */
+    private $avgAu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="smallint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ceres list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Longt</th>
+                <th>Distau</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cere in ceres %}
+            <tr>
+                <td><a href="{{ path('ceres_show', { 'id': cere.id }) }}">{{ cere.longt }}</a></td>
+                <td>{{ cere.distau }}</td>
+                <td>{{ cere.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ceres_show', { 'id': cere.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

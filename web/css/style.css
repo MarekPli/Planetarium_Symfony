@@ -1,0 +1,13 @@
+.slider {
+	/*-webkit-appearance: none;*/
+	/*appearance: none;*/
+	/*outline: none;*/
+	width: 600px;
+	height: 15px;
+	/*opacity: 0.7;*/
+	background: 'red';
+}
+
+.interval {
+	size: 16;
+}

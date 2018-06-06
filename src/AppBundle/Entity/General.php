@@ -8,10 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * General
  *
  * @ORM\Table(name="General", uniqueConstraints={@ORM\UniqueConstraint(name="planet", columns={"planet"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GeneralRepository")
  */
 class General
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="smallint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
      * @var string
      *
@@ -47,16 +56,17 @@ class General
      */
     private $avgAu;
 
+
+
     /**
-     * @var integer
+     * Get id
      *
-     * @ORM\Column(name="id", type="smallint")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @return integer
      */
-    private $id;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set planet
@@ -176,15 +186,5 @@ class General
     public function getAvgAu()
     {
         return $this->avgAu;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

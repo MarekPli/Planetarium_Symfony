@@ -1,0 +1,25 @@
+AppBundle\Entity\Uranus:
+    type: entity
+    table: Uranus
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        longt:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 7
+        distau:
+            type: decimal
+            nullable: false
+            precision: 11
+            scale: 9
+            column: distAU
+    lifecycleCallbacks: {  }

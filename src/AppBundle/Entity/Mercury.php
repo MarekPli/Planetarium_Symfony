@@ -8,10 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * Mercury
  *
  * @ORM\Table(name="Mercury")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MercuryRepository")
  */
 class Mercury
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
      * @var string
      *
@@ -26,16 +35,17 @@ class Mercury
      */
     private $distau;
 
+
+
     /**
-     * @var integer
+     * Get id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @return integer
      */
-    private $id;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set longt
@@ -83,15 +93,5 @@ class Mercury
     public function getDistau()
     {
         return $this->distau;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

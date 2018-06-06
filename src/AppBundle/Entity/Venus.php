@@ -8,10 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * Venus
  *
  * @ORM\Table(name="Venus")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VenusRepository")
  */
 class Venus
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
      * @var string
      *
@@ -26,16 +35,17 @@ class Venus
      */
     private $distau;
 
+
+
     /**
-     * @var integer
+     * Get id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @return integer
      */
-    private $id;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set longt
@@ -83,15 +93,5 @@ class Venus
     public function getDistau()
     {
         return $this->distau;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

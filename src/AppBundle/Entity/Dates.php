@@ -7,28 +7,37 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Dates
  *
- * @ORM\Table(name="Dates")
- * @ORM\Entity
+ * @ORM\Table(name="dates")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DatesRepository")
  */
 class Dates
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="dates", type="string", length=11, nullable=false)
-     */
-    private $dates;
-
-    /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dates", type="string", length=11)
+     */
+    private $dates;
 
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set dates
@@ -52,15 +61,5 @@ class Dates
     public function getDates()
     {
         return $this->dates;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

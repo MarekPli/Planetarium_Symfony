@@ -1,0 +1,48 @@
+AppBundle\Entity\General:
+    type: entity
+    table: General
+    uniqueConstraints:
+        planet:
+            columns:
+                - planet
+    id:
+        id:
+            type: smallint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        planet:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        maxId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: max_id
+        minAu:
+            type: decimal
+            nullable: false
+            precision: 11
+            scale: 9
+            column: min_AU
+        maxAu:
+            type: decimal
+            nullable: false
+            precision: 11
+            scale: 9
+            column: max_AU
+        avgAu:
+            type: decimal
+            nullable: false
+            precision: 11
+            scale: 9
+            column: avg_AU
+    lifecycleCallbacks: {  }

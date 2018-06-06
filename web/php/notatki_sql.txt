@@ -1,0 +1,28 @@
+CREATE TABLE Efemerydy_mini.Ceres (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Ceres WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Jupiter (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Jupiter WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Mars (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Mars WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Mercury (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Mercury WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Moon (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Moon WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Neptune (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Neptune WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Pluto (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Pluto WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Saturn (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Saturn WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Sun (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Sun WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Uranus (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Uranus WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Venus (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT longt, distAU FROM Venus WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.Dates (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT dates FROM Dates WHERE id >= 2691880 AND id < 2692245;
+
+CREATE TABLE Efemerydy_mini.General (id INT AUTO_INCREMENT, PRIMARY KEY (id)) SELECT * FROM General;
+
+UPDATE General SET max_id = 365;
+

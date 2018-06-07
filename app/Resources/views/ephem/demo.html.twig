@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for planet in planets %}
+        <p>
+        {{ planet.name }}: {{ planet.tab.longt }}
+            {{ planet.tab.distAU }}
+        </p>
+    {% endfor %}
+    <p>{{ dump(venus) }} </p>
+    {{ dump(venusy) }}
+{% endblock %}

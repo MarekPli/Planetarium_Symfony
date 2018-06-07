@@ -273,7 +273,8 @@ function drawPlanetsBase(put_date = '', namePlanet = '', angle = -1) {
     // alert(planetNames); // tu jest OK
     $.ajax({
         type: "POST",
-        url: "php/modifyPlanets.php",
+        // url: "php/modifyPlanets.php",
+        url: "/getDataFromPlanets",
         async: false,
         dataType: "json",
         // dataType: "html",

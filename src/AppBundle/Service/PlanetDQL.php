@@ -20,19 +20,23 @@ class PlanetDQL
     private $avg_au;
     private $em;
 
-    public function __construct(EntityManagerInterface $em, $name = 'Venus')
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->name = $name;
-        $this->curr_id = 1;
-        $this->max_au = $this->getSizesBase('MaxAu');
-        $this->min_au = $this->getSizesBase('MinAu');
-        $this->avg_au = $this->getSizesBase('AvgAu');
+//        $this->name = $name;
     }
 
     public function getName()
     {
         return $this->name;
+    }
+    public function setName($name)
+    {
+        $this->name = $name;
+        $this->curr_id = 1;
+        $this->max_au = $this->getSizesBase('MaxAu');
+        $this->min_au = $this->getSizesBase('MinAu');
+        $this->avg_au = $this->getSizesBase('AvgAu');
     }
 
     public function getCurrId()
@@ -210,6 +214,16 @@ class PlanetDQL
         }
         return $names;
     }
+
+    public function getDate($id = 0)
+    {
+        if ($id) {
+            $this->curr_id = $id;
+        }
+        $row = $this->readBDRow('Dates');
+        return $row->getDates();
+    }
+
 
     public function getLongt($id = 0){
         if ($id) {

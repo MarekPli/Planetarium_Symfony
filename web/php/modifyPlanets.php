@@ -35,6 +35,7 @@ function genetivus($name) {
 }
 
 include_once __DIR__ . '/Planet.php';
+
 if (isset($_POST['nr'])) {
 //    set_time_limit(0); // chyba niepotrzebne, program się może zawiesić i lepiej sygnalizować wtedy błąd
     $arrResult = [];

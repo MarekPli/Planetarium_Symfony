@@ -78,9 +78,9 @@ class EphemController extends Controller
             ['planets' => $planets,
                 'venus' => $venus,
                 'venusy' =>
-//                $venus->searchDate('03.01.1970')
+                $venus->searchDate('03.01.1970')
 //                $venus->getMaxCount()
-//                $venus->getLongt(7)
+//                $venus->getLongt(1)
 //                $venus->getDistAU()
 //                    $venus->getDistance()
 //                    $venus->readAllPlanets()

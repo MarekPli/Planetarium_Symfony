@@ -2,7 +2,7 @@ var canvas, ctx, w, h, L=null, do_speed = true;
 var planets = [];
 var planetNames = [];
 var circle = {centerX:250, centerY:250,r:0,angle:0};
-var glob_interval = 25;
+var glob_interval = 23;
 var nr_day = 2691880; // 1 stycznia '70, dana Unixa
 var speed_dates = 23;
 var Planet = function (step,speed,name,nameShow,color='black') {

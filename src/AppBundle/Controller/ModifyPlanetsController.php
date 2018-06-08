@@ -145,4 +145,32 @@ class ModifyPlanetsController extends Controller
         }
     }
 
+
+    /**
+     * @Route("/gg")
+     */
+
+    public function ggTestAction() {
+        $arr = [];
+        $arr['au'] = 'a';
+        $arr['bu'] = 'b';
+        $arr['c'] = 'c';
+        if (array_key_exists ('bus', $arr)) {
+            $arr[] = 'klucz istnieje';
+        }
+        $currPlanet = $this->get('app.planet_dql');
+        $currPlanet->setName('Venus');
+        $currPlanet->getDate();
+        for ($i=0; $i<500; $i++) {
+            $currPlanet->getLongt();
+        }
+        $arr[] = json_encode($currPlanet->readme());
+        $arr = array_merge($arr, $currPlanet->test);
+        foreach ($currPlanet->test as $m) {
+            $arr[] = $m;
+        }
+        return $this->render('default/inne.html.twig',
+            ['wynik' => implode('-',$arr)]);
+
+    }
 }

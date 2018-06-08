@@ -18,7 +18,9 @@ class PlanetDQL
     private $max_au;
     private $min_au;
     private $avg_au;
+    static public $arrDBRow = array();
     private $em;
+    public $test = array();
 
     public function __construct(EntityManagerInterface $em)
     {
@@ -37,6 +39,8 @@ class PlanetDQL
         $this->max_au = $this->getSizesBase('MaxAu');
         $this->min_au = $this->getSizesBase('MinAu');
         $this->avg_au = $this->getSizesBase('AvgAu');
+//        self::$arrDBRow = [];
+        $this->test[] = 'konstruktor';
     }
 
     public function getCurrId()
@@ -74,6 +78,37 @@ class PlanetDQL
 //        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 //        return $result;
 //    }
+    public function readme() {
+        if (!array_key_exists($this->curr_id, self::$arrDBRow)) {
+            $this->test[] = "Readme nie było";
+            $query = $this->em
+                ->createQuery(
+                    'SELECT p'
+                    . ' FROM AppBundle:' . $this->name . ' p'
+                    . ' WHERE p.id >= ' . $this->curr_id
+                    . ' AND p.id <' . ($this->curr_id + 1000)
+                    . ' ORDER BY p.id ASC'
+                );
+            $results = $query->getResult();
+//            self::$arrDBRow = [];
+            foreach ($results as $result) {
+                self::$arrDBRow[$result->getId()] = $result;
+            }
+        } else {
+            $this->test[] = "Readme było";
+
+        }
+        $this->test[] = "Readme end";
+        $s = self::$arrDBRow[$this->curr_id];
+        return $s;
+
+//        if (array_key_exists(7, self::$arrDBRow)) {
+//            return self::$arrDBRow[7]->getLongt();
+//        }
+//        else {
+//            return 'nie ma...';
+//        }
+    }
     private function readBDRow($table = 0)
     {
         if (!$table) {
@@ -81,15 +116,30 @@ class PlanetDQL
         }
 //        $query = "SELECT * FROM " .$table. " WHERE id = "
 //            . $this->curr_id;
+//        $arr = array_keys($this->arrDBRow);
+//        if (in_array($this->curr_id, $arr)) {
+        if (!array_key_exists($table, self::$arrDBRow)) {
+            self::$arrDBRow[$table] = [];
+        }
+        if (array_key_exists($this->curr_id, self::$arrDBRow[$table])) {
+            return self::$arrDBRow[$table][$this->curr_id];
+        }
+        $my_nr = 1;
+        $query = $this->em
+            ->createQuery(
+                'SELECT p'
+                . ' FROM AppBundle:' . $table . ' p'
+                . ' WHERE p.id >= ' . ($this->curr_id)
+                . ' AND p.id <' . ($this->curr_id + $my_nr)
+                . ' ORDER BY p.id ASC'
+            );
+        $results = $query->getResult();
 
-        $result = $this->em
-            ->getRepository('AppBundle:' . $table)
-            ->find($this->curr_id);
-
-
-//        $stmt = self::$conn->query($query);
-//        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
+//        self::$arrDBRow[$table] = [];
+        foreach ($results as $result) {
+            self::$arrDBRow[$table][$result->getId()] = $result;
+        }
+        return self::$arrDBRow[$table][$this->curr_id];
     }
 
 
@@ -103,15 +153,26 @@ class PlanetDQL
 
     private function getSizesBase($column)
     {
-        $row = $this->em
-            ->getRepository('AppBundle:General')
-            ->findOneByPlanet($this->name);
+        $table = 'General';
+        if (!array_key_exists($table, self::$arrDBRow)) {
+            self::$arrDBRow[$table] = [];
+        }
+        if (array_key_exists($this->name, self::$arrDBRow[$table])) {
+            $row = self::$arrDBRow[$table][$this->name];
+        } else {
+            $row = $this->em
+                ->getRepository('AppBundle:General')
+                ->findOneByPlanet($this->name);
 //            ->findAll();
-
+//            foreach ($rows as $row) {
+                self::$arrDBRow[$table][$this->name] = $row;
+//            }
 //        $query = "SELECT * FROM General WHERE planet = "
 //            . "'" .$this->name. "'";
 //        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 //        return $array[$column];
+            $row = self::$arrDBRow[$table][$this->name];
+        }
         $methodName = 'get' . $column;
         return $row->$methodName();
     }
@@ -198,7 +259,7 @@ class PlanetDQL
         }
         $query = $this->em->createQuery($query);
         $result = $query->getResult();
-        return $query;
+//        return $query;
         $this->curr_id = $result.getId();
         return $this->getCurrId();
 

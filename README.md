@@ -1,9 +1,13 @@
-# PLANETARIUM GEOCENTRYCZNE
+# PLANETARIUM GEOCENTRYCZNE v. Symfony
 Program **Planetarium geocentryczne** jest projektem końcowym stacjonarnego kursu bootcamp organizowanego przez firmę 
 _CodersLab_, 
 który odbył się w kwietniu i maju 2018 r. (```Back-end developer: PHP```). Zgodnie z programem kursu skoncentrowałem się na
  języku PHP i  wykorzystaniu baz danych SQL, a materiał prezentuję na stronie przeglądarki internetowej korzystając 
  z języka JavaScript.
+
+## Uwagi o wersji dla Symfony
+
+Program powiela większość funkcji programu „Planetarium geocentryczne” i korzysta z tej samej bazy danych. Pliki JavaScript zostały połączone z szablonami. Zapytania SQL przekształcono na zapytania DQL, odwołujące się do repozytorium stworzonego w Symfony.
  
  ## Główne założenia
  Program miał przedstawiać położenie planet na niebie z perspektywy geocentrycznej, uwzględniającej współrzędne 
